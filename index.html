@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Space Invaders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Space Invaders</h1>
+        <section>
+            <h3>How to Play</h3>
+            <p>
+                You will play as a green ship, scrolling left to right on the bottom of the playing area. Your goal is to destroy 
+                all of the enemy ships, who will be coming toward you from the top of the screen in multiple rows. If any ship is able to 
+                touch your ship, you will lose the game. If an enemy is able to shoot your ship, you will lose a life. If you lose all your
+                lives, you will lose the game. Your goal is to score the most points before your game ends.
+            </p>
+        </section>
+        <section>
+            <h3>Credits</h3>
+            <p>
+                Inspiration, reference, and sprite sheets were acquired from 
+                <a href="https://codepen.io/adelciotto/pen/BHuGL">adelciotto's codepen.io entry</a>.
+            </p>
+        </section>
+        <section>
+            <h3>Controls</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Key</th>
+                        <th scope="col">Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row">
+                        <td style="font-size:2em;">&#8592;</td>
+                        <td>Move Left</td>
+                    </tr>
+                    <tr scope="row">
+                        <td style="font-size:2em;">&#8594;</td>
+                        <td>Move Right</td>
+                    </tr>
+                    <tr scope="row">
+                        <td><b>SPACEBAR</b></td>
+                        <td>Shoot</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <div class="container text-center">
+        <canvas id="game-canvas" width="640px" height="640px"></canvas>
+    </div>
+
+    <div class="container text-center">
+        <h3>High Scores</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Display Name</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Time Occurred</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script src="main.js"></script>    
+</body>
+</html>

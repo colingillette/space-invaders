@@ -63,7 +63,7 @@
     <div class="container text-center">
         <section>
             <h3>Submit Score</h3>
-            <form name="scoreSubmit" action="submit.php" method="POST">
+            <form name="scoreSubmit" action="submit.php" method="POST" onsubmit="saveScore()">
                 <label for="displayName">Display Name</label><br>
                 <input type="text" name="displayName" required><br><br>
                 <input type="hidden" name="score" id="scoreInput">

@@ -61,19 +61,46 @@
     </div>
 
     <div class="container text-center">
-        <h3>High Scores</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Display Name</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Time Occurred</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <section>
+            <h3>Submit Score</h3>
+            <form name="scoreSubmit" action="submit.php">
+                <label for="displayName">Display Name</label><br>
+                <input type="text" name="displayName"><br><br>
+                <input type="hidden" name="score" id="scoreInput">
+                <input type="submit" value="Submit Score" class="btn btn-primary">
+            </form>
+        </section>
+        <section>
+            <h3>High Scores</h3>
+            <?php
+
+            require("score.php");
+            $GLOBALS["error"] = "Sorry! We were unable to retrieve scores at this time.";
+            $Globals["scores"] = array();
+
+            if (top_scores_obtained()) 
+            {
+                echo "<table class='table'>";
+                    echo "<thead>";
+                        echo "<tr>";
+                            echo "<th scope='col'>Display Name</th>";
+                            echo "<th scope='col'>Score</th>";
+                            echo "<th scope='col'>Time Occurred</th>";
+                            echo "</tr>";
+                        echo "</thead>";
+                    echo "<tbody>";
+                        show_top_scores();
+                    echo "</tbody>";
+                echo "</table>";
+            }
+            else
+            {
+                $errorMessage = $GLOBALS["error"];
+                echo "<p>$errorMessage</p>";
+            }
+
+            ?>
+        </section>
     </div>
 
     <script src="main.js"></script>    

@@ -83,6 +83,7 @@
                 echo "<table class='table'>";
                     echo "<thead>";
                         echo "<tr>";
+                            echo "<th scope='col'>Rank</th>";
                             echo "<th scope='col'>Display Name</th>";
                             echo "<th scope='col'>Score</th>";
                             echo "<th scope='col'>Time Occurred</th>";
@@ -102,6 +103,77 @@
             ?>
         </section>
     </div>
+
+    <?php
+    
+    function top_scores_obtained()
+    {
+        $servername = "localhost";
+        $sqlusername = "sp2976";
+        $password = "sp2976";
+        $dbname = "spaceinvaders";
+
+        $conn = new mysqli($servername, $sqlusername, $password, $dbname);
+        $sql = "SELECT display_name, score, DATE_FORMAT(time, '%d-%m-%Y') AS display_time FROM scores ORDER BY score LIMIT TOP 5";
+
+        if ($conn->connect_errno) 
+        {
+            $GLOBALS["error"] = $GLOBALS["error"] . " There was an issue establishing the connection to the database.";
+            return false;
+        }
+        else
+        {
+            try
+            {
+                $results = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($results)) 
+                {
+                    while ($row = mysqli_fetch_assoc($results)) 
+                    {
+                        $score = new Score();
+                        
+                        $score->set_display_name($row["display_name"]);
+                        $score->set_score($row["score"]);
+                        $score->set_display_time($row["display_time"]);
+
+                        array_push($GLOBALS["scores"], $score);
+                    }
+                }
+                else 
+                {
+                    $GLOBALS["error"] = $GLOBALS["error"] . " There was an issue retrieving results once the connection was made.";
+                    return false;
+                }
+            }
+            catch (Exception $e)
+            {
+                $GLOBALS["error"] = $GLOBALS["error"] . " There was an issue moving results to useful data structures.";
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    function show_top_scores()
+    {
+        foreach($i = 0; $i < count($GLOBALS["scores"]); $i++)
+        {
+            $score = $GLOBALS["scores"][$i];
+            $display_name = $score->get_display_name();
+            $score_display = $score->get_score();
+            $display_time = $score->get_display_time();
+
+            echo "<tr>";
+                echo "<td>$i</td>"
+                echo "<td>$display_name</td>"
+                echo "<td>$score_display</td>"
+                echo "<td>$display_time</td>"
+            echo "</tr>";
+        }
+    }
+
+    ?>
 
     <script src="main.js"></script>    
 </body>

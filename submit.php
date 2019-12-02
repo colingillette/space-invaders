@@ -11,6 +11,10 @@ if (validate_data($score))
 {
     store_score($score);
 }
+else
+{
+    show_result(false, "Display name is required to submit a score.");
+}
 
 function test_input($data)
 {

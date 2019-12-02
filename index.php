@@ -65,7 +65,7 @@
             <h3>Submit Score</h3>
             <form name="scoreSubmit" action="submit.php" method="POST">
                 <label for="displayName">Display Name</label><br>
-                <input type="text" name="displayName"><br><br>
+                <input type="text" name="displayName" required><br><br>
                 <input type="hidden" name="score" id="scoreInput">
                 <input type="submit" value="Submit Score" class="btn btn-primary">
             </form>
@@ -151,6 +151,7 @@
                 return false;
             }
 
+            mysqli_close($conn);
             return true;
         }
     }
